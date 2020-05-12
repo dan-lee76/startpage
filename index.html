@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Start Page">
+    <meta name="author" content="Dan Lee">
+    <link rel="icon" href="assets/img/mhs_logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="images/png" href="assets/img/mhs_logo.png" />
+    <title>Start Page</title>
+</head>
+
+<body>
+    <div class="center">
+        <h1 id="greeting"></h1>
+        <h2 id="date"></h2>
+        <div class="">
+        <form method="get" action="https://www.google.co.uk/search" target="_blank" autocomplete="off">
+                <input  type="text" onclick="search(this.value);" name="q" value="" placeholder="where will you explore?" >
+            </form>
+        </div>
+        <div class="row">
+            <div class="column">
+                <span class="heading">Fun</span>
+                <a href="https://www.youtube.co.uk" target="_blank"><div class="link" tabindex="1">Youtube</div></a>
+                <a href="https://www.reddit.com" target="_blank"><div class="link" tabindex="1">Reddit</div></a>
+                <a href="https://www.netflix.com" target="_blank"><div class="link" tabindex="1">Netflix</div></a>
+                <a href="https://www.twitch.tv" target="_blank"><div class="link" tabindex="1">Twitch</div></a>
+            </div>
+            <div class="column">
+                <span class="heading">Social</span>
+                <a href="https://www.messenger.com" target="_blank"><div class="link" tabindex="1">Messenger</div></a>
+                <a href="https://www.outlook.com" target="_blank"><div class="link" tabindex="1">Outlook</div></a>
+                <a href="https://www.tuta.io" target="_blank"><div class="link" tabindex="1">Tutanota</div></a>
+                <a href="https://www.facebook.com/" target="_blank"><div class="link" tabindex="1">Facebook</div></a>
+            </div>
+            <div class="column"><span class="heading">Study</span>
+                <a href="https://www.satchelone.com/todos/issued" target="_blank"><div class="link" tabindex="1">Satchel:one</div></a>
+                <a href="https://mail.google.com/mail/u/1/#inbox" target="_blank"><div class="link" tabindex="1">Springmail</div></a>
+                <a href="https://classroom.google.com/u/1/h" target="_blank"><div class="link" tabindex="1">Classroom</div></a>
+                <a href="https://drive.google.com/drive/u/1/" target="_blank"><div class="link" tabindex="1">Drive</div></a>
+            </div>
+            <div class="column"><span class="heading">Else</span>
+                <a href="https://www.github.com/dan-lee76" target="_blank"><div class="link" tabindex="1">Github</div></a>
+                <a href="192.168.1.124" target="_blank"><div class="link" tabindex="1">Server</div></a>
+                <a href="192.168.1.254" target="_blank"><div class="link" tabindex="1">Hub</div></a>
+                <a href="https://theuselessweb.com/" target="_blank"><div class="link" tabindex="1">Random</div></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
