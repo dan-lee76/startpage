@@ -61,5 +61,5 @@ var IPlocation = "https://geo.ipify.org/api/v1?apiKey=at_FVI4Fkx3HauSCgbmx5ffZq3
         };
 
 
-        xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=wisbech&units=metric&appid=1097e7790d09472fcbbc6b813f92b183", true);
+        xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=nottingham&units=metric&appid=1097e7790d09472fcbbc6b813f92b183", true);
         xmlhttp.send();
