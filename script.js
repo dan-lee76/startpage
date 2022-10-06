@@ -3,19 +3,19 @@ var today = new Date();
 var hrs = today.getHours();
 var greet;
 if (hrs < 12)
-    greet = 'Good Morning';
+    greet = 'Good morning';
 else if (hrs >= 12 && hrs <= 17)
-    greet = 'Good Afternoon';
+    greet = 'Good afternoon';
 else if (hrs >= 17 && hrs <= 20)
-    greet = 'Good Evening';
+    greet = 'Good evening';
 else if (hrs >= 21 && hrs <= 24)
-    greet = 'Good Night';
+    greet = 'Good night';
 document.getElementById('greeting').innerHTML =greet + ", Dan."
 
 // ------------- DATE ------------- 
 var month = today.getMonth();
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-document.getElementById('date').innerHTML ="Today is " + today.getDate() +" " +monthNames[today.getMonth()]+"."
+document.getElementById('date').innerHTML =today.getDate() +" " +monthNames[today.getMonth()]
 
 document.ondragstart = function() {
     return false;
@@ -29,7 +29,7 @@ function currentTime() {
     const element = document.querySelector('#time');
     m = checkTime(min);
     s = checkTime(seconds);
-    document.getElementById('time').innerHTML = hour + "<span style='color:#63AFD0;'>:</span>" + m + "<span style='color:#63AFD0;'>:</span>" + s;
+    document.getElementById('time').innerHTML = hour + "<span style='color:white;'>:</span>" + m + "<span style='color:;'>:</span>" + s;
     document.getElementById("title").innerHTML = hour + ":" + m + " | StartPage"
     var t = setTimeout(currentTime, 500);
 }
