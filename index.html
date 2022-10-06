@@ -10,49 +10,22 @@
 </head>
 
 <body onload="currentTime()">
-    <div class="wrapper">
-    <div class="center">
-        <h2 id="time">dan</h2>
-        <h1 id="greeting"></h1>
-        <h2 id="date"></h2>
-        <div class="">
+    <div class="page">
+        <div class="top">
+            <h2 id="greeting"></h2>
+            <h2 id="time"></h2>
+            <!-- <h2 id="date"></h2> -->
+        </div>
+        <div class="search">
         <form method="get" action="https://www.google.co.uk/search"  autocomplete="off">
-                <input spellcheck="false" type="text" name="q" value="" autofocus="autofocus" placeholder="where will you explore?" >
+            <label>λ</label>
+                <input spellcheck="false" type="text" name="q" value="" autofocus="autofocus" placeholder="" >
             </form>
         </div>
-        <div class="box">
-            <div class="box-container">
-                <span class="heading">Fun</span>
-                <a href="https://www.youtube.co.uk" target=""><div class="link" tabindex="1">Youtube</div></a>
-                <a href="https://www.reddit.com" target=""><div class="link" tabindex="2">Reddit</div></a>
-                <a href="https://www.netflix.com" target=""><div class="link" tabindex="3">Netflix</div></a>
-                <a href="https://www.twitch.tv" target=""><div class="link" tabindex="4">Twitch</div></a>
-            </div>
-            <div class="box-container">
-                <span class="heading">Social</span>
-                <a href="https://www.messenger.com" target=""><div class="link" tabindex="5">Messenger</div></a>
-                <a href="https://www.outlook.com" target=""><div class="link" tabindex="6">Outlook</div></a>
-                <a href="https://www.tuta.io" target=""><div class="link" tabindex="7">Tutanota</div></a>
-                <a href="https://www.facebook.com/" target=""><div class="link" tabindex="8">Facebook</div></a>
-            </div>
-            <div class="box-container"><span class="heading">Study</span>
-                <a href="https://www.satchelone.com/todos/issued" target=""><div class="link" tabindex="9">Satchel:one</div></a>
-                <a href="https://mail.google.com/mail/u/1/#inbox" target=""><div class="link" tabindex="10">Springmail</div></a>
-                <a href="https://classroom.google.com/u/1/h" target=""><div class="link" tabindex="11">Classroom</div></a>
-                <a href="https://drive.google.com/drive/u/1/" target=""><div class="link" tabindex="12">Drive</div></a>
-            </div>
-            <div class="box-container"><span class="heading">Else</span>
-                <a href="https://www.github.com/dan-lee76" target=""><div class="link" tabindex="13">Github</div></a>
-                <a href="192.168.1.124" target=""><div class="link" tabindex="14">Server</div></a>
-                <a href="192.168.1.254" target=""><div class="link" tabindex="15">Hub</div></a>
-                <a href="https://theuselessweb.com/" target=""><div class="link" tabindex="16">Random</div></a>
-            </div>
-        </div>
-        <div class="weather">
+    </div>
+        <!-- <div class="weather">
             <p>Currently in <span id="weather-loca-name"></span> , <span id="weather-sts-country"></span> the weather is <span id="weather-desc"></span> <span id="weather-temp"></span>°C with a humidity of <span id="weather-hum"></span>% and a pressure of <span id="weather-pres"></span> hPa.<br> Wind speeds are at <span id="weather-win-spe"></span>mps blowing at <span id="weather-win-deg"></span>°.</p>
-        </div>
-    </div>
-    </div>
+        </div> -->
 </body>
 <script src="script.js"></script>
 
