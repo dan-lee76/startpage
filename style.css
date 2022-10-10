@@ -49,9 +49,10 @@ label{
 }
 form{
     padding: 50px;
-    border-radius: 50px;
-    box-shadow:  20px 20px 39px #0c0c0c,
-             -20px -20px 39px #181818;
+    border-radius: 48px;
+background: #121212;
+box-shadow:  9px 9px 18px #0e0e0e,
+             -9px -9px 18px #161616;
     font-size: 7vh;
 }
 input{
@@ -82,30 +83,34 @@ a{
 }
 /* ------------- Links and Contaienr ------------- */
 .link{
-    padding: 10px 0 10PX 15px;
-    color: #63AFD0;
+    padding: 15px 0 15px 0;
+    color: var(--headingColor);
     outline: none;
 }
 .link:hover{
-    color: white;
+    color: green;
 }
 .link:nth-child(4){
     color: black;
 }
 .box{
-    padding-top: 20px;
     content: "";
     display: table;
-    clear:both;
-    width: 950px;
+    clear: both;
+    margin: 0;
+    padding: 20px 0 0 0;
+    width: 100%;
 }
 .box .box-container{
     /*padding: 10px;*/
     float:left;
-    width: 200px;
-    background: #0D619D;
-    border-radius: 10px;
+    width: 30%;
+    background: var(--bgColor);
     text-align: left;
+    border-radius: 15px;
+    box-shadow:  9px 9px 18px #0e0e0e,
+             -9px -9px 18px #161616;
+    text-align: center;
 
 }
 .box .box-container:not(:last-child) {
@@ -114,30 +119,6 @@ a{
 .box .box-container .heading {
 	margin: 25px 0 9px 15px;
 	font-size: 33px;
-}
-.weather{
-    padding: 10px;
-}
-
-/* ------------- TRANSITIONS AND SHADOWS ------------- */
-.link, .link:visited, .link:hover, .box .box-container:hover, .box .box-container {
-	-webkit-transition: all 150ms ease-in-out;
-	-moz-transition: all 150ms ease-in-out;
-	-ms-transition: all 150ms ease-in-out;
-	-o-transition: all 150ms ease-in-out;
-	transition: all 150ms ease-in-out;
-}
-
-.box .box-container:hover {
-	-webkit-box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.75);
-	-moz-box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.75);
-	box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.75);
-}
-
-.container form, .box .box-container {
-	-webkit-box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.25);
-	-moz-box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.25);
-	box-shadow: 4px 4px 15px -5px rgba(0,0,0,0.25);
 }
 /* ------------- MEDIA QUERY ------------- */ 
 
@@ -193,7 +174,7 @@ a{
   }
 
 .page{
-    padding: 1% 10% 0 10%;
+    padding: 1% 10% 1% 10%;
 }
 .top{
     border-bottom: solid 5px var(--headingColor);
