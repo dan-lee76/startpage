@@ -14,7 +14,27 @@
 </head>
 
 <body onload="currentTime()">
-    <div class="bg"></div>
+    <div class="bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.02)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.015)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.01)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.04)" />
+            </g>
+        </svg>
+    </div>
     <div class="center">
         <div id="time" class="clock"></div>
         <h1 id="greeting" class="greeting"></h1>
@@ -27,18 +47,12 @@
             <span class="sep">•</span>
             <span id="weather-loc" class="weather-loc"></span>
         </div>
-        <div id="calendar-widget" class="calendar-widget list-view">
-            <div class="calendar-header">
-                <span>Upcoming Events</span>
-                <a href="https://outlook.live.com/calendar/0/view/month" target="_blank" class="cal-link" title="Open Outlook Calendar">📅</a>
-            </div>
-            <div class="events-list" id="events-list"></div>
-        </div>
-        <form class="search-form" method="get" action="https://duckduckgo.com/" autocomplete="off">
+        <form id="search-form" class="search-form" method="get" action="https://duckduckgo.com/" autocomplete="off">
             <div class="search-wrap">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input spellcheck="false" type="text" name="q" value="" autofocus placeholder="Search the web…" />
+                <button type="button" id="engine-toggle" class="engine-toggle" title="Change Search Engine">🦆</button>
+                <input id="search-input" spellcheck="false" type="text" name="q" value="" autofocus placeholder="Search the web…" />
             </div>
+            <div id="search-history" class="search-history-dropdown"></div>
         </form>
         <div id="bookmarks" class="bookmarks-container">
             <button id="add-bookmark-btn" class="add-bookmark-btn" title="Add Bookmark">+</button>

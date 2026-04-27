@@ -212,6 +212,7 @@ glow.className = 'cursor-glow';
 document.body.appendChild(glow);
 
 document.addEventListener('mousemove', (e) => {
+    // Flashlight effect
     glow.style.left = e.clientX + 'px';
     glow.style.top = e.clientY + 'px';
     glow.style.opacity = '1';
@@ -221,43 +222,117 @@ document.addEventListener('mouseleave', () => {
     glow.style.opacity = '0';
 });
 
-// ------------- EVENTS -------------
-const myEvents = [
-    { title: "Team Sync", time: "Tomorrow, 10:00 AM", color: "#6366f1" },
-    { title: "Doctor Appointment", time: "Friday, 2:30 PM", color: "#ec4899" }
-];
+// ------------- SEARCH HISTORY -------------
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const historyDropdown = document.getElementById('search-history');
 
-function renderEvents() {
-    const list = document.getElementById('events-list');
-    if (!list) return;
-    
-    list.innerHTML = '';
-    
-    if (myEvents.length === 0) {
-        list.innerHTML = '<div class="no-events">No upcoming events</div>';
+const MAX_HISTORY = 6;
+
+function loadSearchHistory() {
+    const saved = localStorage.getItem('startpage_search_history');
+    return saved ? JSON.parse(saved) : [];
+}
+
+function saveSearchHistory(history) {
+    localStorage.setItem('startpage_search_history', JSON.stringify(history));
+}
+
+function renderSearchHistory() {
+    const history = loadSearchHistory();
+    if (history.length === 0) {
+        historyDropdown.innerHTML = '';
+        historyDropdown.classList.remove('active');
         return;
     }
     
-    myEvents.forEach(ev => {
-        const item = document.createElement('div');
-        item.className = 'event-item';
-        if (ev.color) item.style.borderLeftColor = ev.color;
-        
-        const details = document.createElement('div');
-        details.className = 'event-details';
-        
-        const title = document.createElement('div');
-        title.className = 'event-title';
-        title.textContent = ev.title;
-        
-        const time = document.createElement('div');
-        time.className = 'event-time';
-        time.textContent = ev.time;
-        
-        details.appendChild(title);
-        details.appendChild(time);
-        item.appendChild(details);
-        list.appendChild(item);
+    let html = `
+        <div style="padding: 0.5rem;">
+            <div class="history-header">
+                <span>Recent Searches</span>
+                <button class="clear-history-btn" id="clear-history" title="Clear search history">Clear</button>
+            </div>
+    `;
+    
+    history.forEach(term => {
+        html += `
+            <div class="history-item" data-term="${term}">
+                <svg class="history-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>${term}</span>
+            </div>
+        `;
+    });
+    
+    html += `</div>`;
+    
+    historyDropdown.innerHTML = html;
+    
+    document.getElementById('clear-history').addEventListener('click', (e) => {
+        e.stopPropagation();
+        saveSearchHistory([]);
+        renderSearchHistory();
+    });
+    
+    document.querySelectorAll('.history-item').forEach(item => {
+        item.addEventListener('click', () => {
+            searchInput.value = item.dataset.term;
+            searchForm.submit();
+        });
     });
 }
-renderEvents();
+
+searchForm.addEventListener('submit', () => {
+    const term = searchInput.value.trim();
+    if (term) {
+        let history = loadSearchHistory();
+        history = history.filter(t => t !== term); // Remove duplicates
+        history.unshift(term); // Add to front
+        if (history.length > MAX_HISTORY) history.pop();
+        saveSearchHistory(history);
+    }
+});
+
+searchInput.addEventListener('focus', () => {
+    const history = loadSearchHistory();
+    if (history.length > 0) {
+        renderSearchHistory();
+        historyDropdown.classList.add('active');
+    }
+});
+
+document.addEventListener('click', (e) => {
+    // Hide if clicking outside the search form
+    if (!searchForm.contains(e.target)) {
+        historyDropdown.classList.remove('active');
+    }
+});
+
+// ------------- SEARCH ENGINE TOGGLE -------------
+const engines = [
+    { name: 'DuckDuckGo', url: 'https://duckduckgo.com/', icon: '🦆' },
+    { name: 'Google', url: 'https://www.google.com/search', icon: '🔍' },
+    { name: 'Bing', url: 'https://www.bing.com/search', icon: '🟦' },
+    { name: 'YouTube', url: 'https://www.youtube.com/results', icon: '📺', param: 'search_query' }
+];
+
+const engineToggleBtn = document.getElementById('engine-toggle');
+let currentEngineIndex = parseInt(localStorage.getItem('startpage_search_engine')) || 0;
+
+function updateSearchEngine() {
+    const engine = engines[currentEngineIndex];
+    searchForm.action = engine.url;
+    searchInput.placeholder = `Search ${engine.name}…`;
+    searchInput.name = engine.param || 'q';
+    engineToggleBtn.textContent = engine.icon;
+}
+
+engineToggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    currentEngineIndex = (currentEngineIndex + 1) % engines.length;
+    localStorage.setItem('startpage_search_engine', currentEngineIndex);
+    updateSearchEngine();
+});
+
+// Initialize search engine
+updateSearchEngine();
+
